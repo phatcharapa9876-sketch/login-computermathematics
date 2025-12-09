@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ลงทะเบียนนักศึกษา (OFFLINE)</title>
+
+<style>
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #d1c4e9, #7b1fa2);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        background: #f3e5f5;
+        width: 400px;
+        padding: 50px 30px 30px 30px;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(123,31,162,0.4);
+        text-align: center;
+        position: relative;
+        animation: fadeIn 0.7s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+
+    .icon-top {
+        font-size: 60px;
+        background: linear-gradient(45deg, #ab47bc, #8e24aa);
+        color: white;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        border-radius: 50%;
+        margin: -70px auto 20px auto;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        color: #6a1b9a;
+        margin-bottom: 30px;
+        font-size: 26px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-group {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 20px;
+        font-size: 15px;
+        background: #f3e5f5;
+        box-shadow: 0 3px 6px rgba(123,31,162,0.2);
+        transition: 0.4s all;
+        color: #4a148c;
+        box-sizing: border-box;
+    }
+
+    input:focus {
+        outline: none;
+        background: #ede7f6;
+        box-shadow: 0 0 10px rgba(123,31,162,0.6);
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(90deg, #8e24aa, #ab47bc);
+        color: white;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #6a1b9a, #8e24aa);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(123,31,162,0.4);
+    }
+</style>
+
+</head>
+<body>
+
+<div class="card">
+    <div class="icon-top">🔒</div>
+    <h2>เข้าสู่ระบบ (ออฟไลน์)</h2>
+
+    <form id="offlineForm">
+        <div class="input-group">
+            <input type="text" name="name" placeholder="ชื่อ-นามสกุล" required>
+        </div>
+
+        <div class="input-group">
+            <input type="text" name="studentid" placeholder="รหัสนักศึกษา" required>
+        </div>
+
+        <button type="submit">บันทึกข้อมูล</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("offlineForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = e.target.name.value;
+    let studentid = e.target.studentid.value;
+
+    let date = new Date().toLocaleDateString("th-TH");
+    let time = new Date().toLocaleTimeString("th-TH");
+
+    // ข้อมูลที่จะบันทึกลงไฟล์
+    let text = 
+`ข้อมูลผู้ลงทะเบียน
+---------------------------
+ชื่อ: ${name}
+รหัสนักศึกษา: ${studentid}
+วันที่: ${date}
+เวลา: ${time}
+`;
+
+    // สร้างไฟล์ .txt ให้ดาวน์โหลดเอง
+    let blob = new Blob([text], { type: "text/plain" });
+
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "register.txt";
+    a.click();
+
+    alert("บันทึกข้อมูลเรียบร้อยแล้ว (ไฟล์ register.txt ถูกดาวน์โหลด)");
+
+    // รีเซ็ตฟอร์ม
+    e.target.reset();
+});
+</script>
+
+</body>
+</html>
