@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบฝึกหัดบทที่ 2 ระบบจำนวน</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --main-grad: linear-gradient(135deg,#a1c4fd,#6c82ff);
+  --correct:#d4edda;
+  --wrong:#f8d7da;
+}
+body{
+  font-family:'Sarabun',sans-serif;
+  background:#f0f6ff;
+  padding:20px;
+}
+.container{
+  background:#fff;
+  max-width:950px;
+  margin:auto;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+.header{
+  background:var(--main-grad);
+  color:#fff;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  margin-bottom:25px;
+}
+h3{
+  color:#4257c9;
+  border-left:6px solid #6c82ff;
+  padding-left:12px;
+  margin-top:35px;
+}
+
+/* ข้อมูลผู้เรียน */
+.info{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:15px;
+  margin-bottom:30px;
+}
+.info input{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+/* ตาราง */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+th,td{
+  border:1px solid #ccc;
+  padding:12px;
+  text-align:center;
+}
+th{background:#eaf0ff}
+
+/* ช่องคำตอบ */
+.answer{
+  width:85%;
+  min-height:36px;
+  padding:6px 8px;
+  font-size:15px;
+  border-radius:8px;
+  border:1px solid #bbb;
+  text-align:center;
+  resize:none;
+}
+
+.is-correct{background:var(--correct)!important;}
+.is-wrong{background:var(--wrong)!important;}
+
+button{
+  background:var(--main-grad);
+  color:#fff;
+  border:none;
+  padding:18px 60px;
+  border-radius:40px;
+  font-size:20px;
+  cursor:pointer;
+  display:block;
+  margin:40px auto;
+}
+#result{
+  display:none;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  margin-top:20px;
+}
+/* ===== ปุ่มย้อนกลับ ===== */
+.back-btn{
+  display:inline-block;
+  margin:20px auto 0;
+  padding:14px 36px;
+  border-radius:30px;
+  background:#ffffff;
+  color:#4257c9;              /* สีตัวอักษรบทที่ 2 */
+  font-size:18px;
+  font-weight:600;
+  text-decoration:none;
+  border:2px solid #6c82ff;   /* ขอบสีบทที่ 2 */
+  transition:.25s;
+}
+
+.back-btn:hover{
+  background:linear-gradient(135deg,#a1c4fd,#6c82ff); /* ไล่สีบทที่ 2 */
+  color:white;
+  transform:translateY(-2px);
+}
+
+.back-wrap{
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="header">
+  <h1>บทที่ 2 : ระบบจำนวน</h1>
+</div>
+
+<!-- ข้อมูลผู้เรียน -->
+<div class="info">
+  <input id="studentName" placeholder="ชื่อ - สกุล">
+  <input id="studentClass" placeholder="ชั้น">
+  <input id="studentDept" placeholder="แผนก">
+</div>
+
+<h3>ข้อ 1 : เขียนคำอ่านของเลขฐาน</h3>
+<table>
+<tr><th>ข้อ</th><th>โจทย์</th><th>คำตอบ</th></tr>
+<tr><td>1.</td><td>21 (ฐานสิบ)</td><td><textarea id="a31" class="answer"></textarea></td></tr>
+<tr><td>2.</td><td>29B4 (ฐานสิบหก)</td><td><textarea id="a32" class="answer"></textarea></td></tr>
+<tr><td>3.</td><td>1011001 (ฐานสอง)</td><td><textarea id="a33" class="answer"></textarea></td></tr>
+</table>
+
+<h3>ข้อ 2 : เติมคำตอบให้ถูกต้อง</h3>
+<table>
+<tr><th>ข้อ</th><th>โจทย์</th><th>คำตอบ</th></tr>
+<tr><td>1.</td><td>รหัสที่ใช้แทนการมีกระแสไฟ หรือ สวิตช์เปิด</td><td><textarea id="a51" class="answer"></textarea></td></tr>
+<tr><td>2.</td><td>รหัสที่ใช้แทนการไม่มีกระแสไฟ หรือ สวิตช์ปิด</td><td><textarea id="a52" class="answer"></textarea></td></tr>
+</table>
+
+<h3>ข้อ 3 : กระจายเลข</h3>
+<table>
+<tr><th>ข้อ</th><th>โจทย์</th><th>คำตอบ</th></tr>
+<tr><td>1.</td><td>3564₈</td><td><textarea id="a61" class="answer"></textarea></td></tr>
+<tr><td>2.</td><td>293.67₁₀</td><td><textarea id="a62" class="answer"></textarea></td></tr>
+</table>
+
+<h3>ข้อ 4 : ค่าของจำนวน</h3>
+<table>
+<tr><th>ข้อ</th><th>โจทย์</th><th>คำตอบ</th></tr>
+<tr><td>1.</td><td>2³</td><td><textarea id="a73" class="answer"></textarea></td></tr>
+<tr><td>2.</td><td>10²</td><td><textarea id="a75" class="answer"></textarea></td></tr>
+<tr><td>3.</td><td>2450⁰</td><td><textarea id="a76" class="answer"></textarea></td></tr>
+</table>
+
+<button onclick="check()">ส่งคำตอบ</button>
+<div id="result"></div>
+<div class="back-wrap">
+  <a href="unit2.html" class="back-btn">⬅ กลับหน้าบทเรียน</a>
+</div>
+</div>
+
+<script>
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxDdPAKK6oOTz_Hzg_aQtzXRYD1iYOcJE3UzJ4wyYC9RodaYaS3OSzGeZwI2co_ckKJ/exec";
+
+function check(){
+  const name = studentName.value.trim();
+  const cls  = studentClass.value.trim();
+  const dept = studentDept.value.trim();
+
+  if(!name || !cls || !dept){
+    alert("กรุณากรอกข้อมูลให้ครบ");
+    return;
+  }
+
+  let score = 0;
+  const total = 10;
+
+  const ans = {
+    a31:"ยี่สิบสอง ฐานสิบ",
+    a32:"สอง เก้า บี สี่ ฐานสิบหก",
+    a33:"หนึ่ง ศูนย์ หนึ่ง หนึ่ง ศูนย์ ศูนย์ หนึ่ง ฐานสอง",
+    a51:"1",
+    a52:"0",
+    a61:"(3×8³)+(5×8²)+(6×8¹)+(4×8⁰)",
+    a62:"(2×10²)+(9×10¹)+(3×10⁰)+(6×10⁻¹)+(7×10⁻²)",
+    a73:"8",
+    a75:"100",
+    a76:"1"
+  };
+
+  for(let k in ans){
+    const input = document.getElementById(k);
+    if(input.value.replace(/\s/g,'') === ans[k].replace(/\s/g,'')){
+      input.classList.add("is-correct");
+      score++;
+    }else{
+      input.classList.add("is-wrong");
+    }
+  }
+
+  result.style.display = "block";
+  result.innerHTML = `คะแนน ${score} / ${total}`;
+
+  // ✅ ส่งข้อมูลเข้า Google Sheet (วิธีที่เสถียรที่สุด)
+  const url =
+    SHEET_URL +
+    "?time="  + encodeURIComponent(new Date().toLocaleString("th-TH")) +
+    "&name="  + encodeURIComponent(name) +
+    "&class=" + encodeURIComponent(cls) +
+    "&dept="  + encodeURIComponent(dept) +
+    "&score=" + score +
+    "&total=" + total;
+
+  new Image().src = url; // 🔥 เทคนิคไม่พัง
+}
+</script>
+
+</body>
+</html>
