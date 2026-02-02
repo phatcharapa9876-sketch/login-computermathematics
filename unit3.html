@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>บทที่ 3 : การคำนวณในระบบเลขฐาน</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --main-grad: linear-gradient(135deg,#d4fc79,#57c84d);
+    --bg: #f3ffe9;
+    --title: #3e8f3e;
+}
+
+body{
+    margin:0;
+    font-family:'Prompt',sans-serif;
+    background:var(--bg);
+}
+
+/* ===== Header ===== */
+.header{
+    background:var(--main-grad);
+    padding:45px 20px;
+    text-align:center;
+    color:white;
+    border-radius:0 0 30px 30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.header h1{
+    margin:0;
+    font-size:34px;
+}
+
+/* ===== Layout ===== */
+.container{
+    max-width:900px;
+    width:90%;
+    margin:35px auto;
+}
+
+/* ===== Section ===== */
+.section{
+    background:white;
+    padding:28px;
+    border-radius:22px;
+    margin-bottom:22px;
+    box-shadow:0 6px 16px rgba(0,0,0,.12);
+}
+
+.section h2{
+    margin-top:0;
+    margin-bottom:18px;
+    color:var(--title);
+}
+
+/* ===== Buttons ===== */
+.btn{
+    display:block;
+    padding:16px;
+    border-radius:16px;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    background:var(--main-grad);
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+/* ===== Video Grid (บน 2 ล่าง 2) ===== */
+.video-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+/* ===== Navigation ===== */
+.nav-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:18px;
+    margin:45px 0;
+}
+
+.nav-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 24px;
+    border-radius:24px;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+    transition:.3s;
+}
+
+.nav-card span{font-size:26px;}
+.nav-card small{font-size:14px;opacity:.8;}
+.nav-card strong{font-size:20px;}
+
+/* Back & Home */
+.nav-card.back,
+.nav-card.home{
+    background:white;
+    color:#444;
+    border:2px solid #d9f2c3;
+}
+
+/* Next */
+.nav-card.next{
+    background:var(--main-grad);
+    color:white;
+}
+
+.nav-card:hover{
+    transform:translateY(-4px);
+}
+
+/* ===== Mobile ===== */
+@media(max-width:700px){
+    .video-grid,
+    .nav-wrap{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>หน่วยที่ 3 การเปลี่ยนฐานของตัวเลขในระบบคอมพิวเตอร์</h1>
+</div>
+
+<div class="container">
+
+    <div class="section">
+        <h2>✨ แบบทดสอบก่อนเรียน</h2>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScEM-Rg9MEvyOwM9aZQl4nR0yJXjpk86PmNnUrwmgzYB01xlA/viewform?usp=header" class="btn">เริ่มทำแบบทดสอบก่อนเรียน</a>
+    </div>
+
+    <div class="section">
+        <h2>🎬 วิดีโอการสอน</h2>
+        <div class="video-grid">
+            <a href="learn31.html" class="btn">การเปลี่ยนเลขฐานสิบ</a>
+            <a href="learn32.html" class="btn">การเปลี่ยนเลขฐานสอง</a>
+            <a href="learn33.html" class="btn">การเปลี่ยนเลขฐานแปด</a>
+            <a href="learn34.html" class="btn">การเปลี่ยนเลขฐานสิบหก</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📝 แบบฝึกหัด</h2>
+        <a href="pretest3.html" class="btn">ทำแบบฝึกหัด</a>
+    </div>
+
+    <div class="section">
+        <h2>🏁 แบบทดสอบหลังเรียน</h2>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfE3Yzr6j1MM6BQQFd1HJmVHtaf54w5UnZs4CG9ByY8rdE22A/viewform?usp=header" class="btn">ทำแบบทดสอบหลังเรียน</a>
+    </div>
+
+    <!-- ===== Navigation ===== -->
+    <div class="nav-wrap">
+        <a href="unit2.html" class="nav-card back">
+            <div>
+                <small>ย้อนกลับ</small><br>
+                <strong>บทก่อนหน้า</strong>
+            </div>
+            <span>⬅</span>
+        </a>
+
+        <a href="Homepage.html" class="nav-card home">
+            <div>
+                <small>กลับไป</small><br>
+                <strong>หน้าหลัก</strong>
+            </div>
+            <span>🏠</span>
+        </a>
+
+        <a href="unit4.html" class="nav-card next">
+            <div>
+                <small>ถัดไป</small><br>
+                <strong>บทเรียนถัดไป</strong>
+            </div>
+            <span>➡</span>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
