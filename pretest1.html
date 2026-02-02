@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกหัดบทที่ 1: จำนวนและตัวเลข</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-grad: linear-gradient(135deg, #f08a8a 0%, #e67373 100%);
+            --correct-bg: #d4edda; /* สีเขียวอ่อน */
+            --wrong-bg: #f8d7da;   /* สีแดงอ่อน */
+            --header-pink: #feecec;
+        }
+        body { font-family: 'Sarabun', sans-serif; background: #fdf2f2; padding: 20px; color: #4a4a4a; }
+        .container { background: white; max-width: 950px; margin: 0 auto; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .header-card { background: var(--primary-grad); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 25px; }
+        .user-info { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; margin-bottom: 30px; background: var(--header-pink); padding: 20px; border-radius: 10px; }
+        .user-info input { padding: 10px; border: 1px solid #ddd; border-radius: 5px; outline: none; }
+        h3 { color: #b04141; border-left: 6px solid #e67373; padding-left: 12px; margin-top: 40px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #fff; }
+        th { background: var(--header-pink); padding: 12px; border: 1px solid #ccc; color: #b04141; }
+        td { padding: 10px; border: 1px solid #ccc; text-align: center; transition: 0.3s; }
+        input[type="text"] { width: 85%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; text-align: center; font-family: 'Sarabun'; }
+        .btn-submit { background: var(--primary-grad); color: white; border: none; padding: 18px 60px; border-radius: 40px; font-size: 20px; cursor: pointer; display: block; margin: 40px auto; transition: 0.3s; box-shadow: 0 4px 15px rgba(230,115,115,0.3); }
+        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(230,115,115,0.5); }
+        .result-panel { display: none; padding: 25px; border-radius: 15px; text-align: center; font-size: 22px; font-weight: bold; margin-top: 20px; border: 3px solid; }
+        
+        /* คลาสสำหรับสี */
+        .is-correct { background-color: var(--correct-bg) !important; }
+        .is-wrong { background-color: var(--wrong-bg) !important; }
+        .ans-text { color: #dc3545; font-size: 14px; display: block; margin-top: 5px; font-weight: bold; }
+ 
+.back-btn{
+  display:inline-block;
+  margin:20px auto 0;
+  padding:14px 36px;
+  border-radius:30px;
+  background:#ffffff;
+  color:#b04141;
+  font-size:18px;
+  font-weight:600;
+  text-decoration:none;
+  border:2px solid #f08a8a;
+  transition:.25s;
+}
+.back-btn:hover{
+  background:#f08a8a;
+  color:white;
+  transform:translateY(-2px);
+}
+.back-wrap{
+  text-align:center;
+}
+ 
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-card">
+        <h1>หน่วยที่ 1 จำนวนและตัวเลข</h1>
+         
+    </div>
+
+    <div class="user-info">
+        <input type="text" id="userName" placeholder="ชื่อ-นามสกุล" required>
+        <input type="text" id="userClass" placeholder="ชั้น" required>
+        <input type="text" id="userDept" placeholder="แผนก" required>
+    </div>
+
+    <h3>1. ระบบตัวเลขต่างๆ</h3>
+    <table id="part1">
+        <thead>
+            <tr><th>ข้อ</th><th>สัญลักษณ์</th><th>อียิปต์</th><th>บาบิโลน</th><th>โรมัน</th><th>อารบิก</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1.1</td><td>29</td><td><input type="radio" name="p1_1" value="eg"></td><td><input type="radio" name="p1_1" value="bb"></td><td><input type="radio" name="p1_1" value="rm"></td><td><input type="radio" name="p1_1" value="ar"></td></tr>
+            <tr><td>1.2</td><td>∇</td><td><input type="radio" name="p1_2" value="eg"></td><td><input type="radio" name="p1_2" value="bb"></td><td><input type="radio" name="p1_2" value="rm"></td><td><input type="radio" name="p1_2" value="ar"></td></tr>
+            <tr><td>1.3</td><td>2556</td><td><input type="radio" name="p1_3" value="eg"></td><td><input type="radio" name="p1_3" value="bb"></td><td><input type="radio" name="p1_3" value="rm"></td><td><input type="radio" name="p1_3" value="ar"></td></tr>
+            <tr><td>1.4</td><td>VII</td><td><input type="radio" name="p1_4" value="eg"></td><td><input type="radio" name="p1_4" value="bb"></td><td><input type="radio" name="p1_4" value="rm"></td><td><input type="radio" name="p1_4" value="ar"></td></tr>
+            <tr><td>1.5</td><td>CM</td><td><input type="radio" name="p1_5" value="eg"></td><td><input type="radio" name="p1_5" value="bb"></td><td><input type="radio" name="p1_5" value="rm"></td><td><input type="radio" name="p1_5" value="ar"></td></tr>
+        </tbody>
+    </table>
+
+    <h3>2. เปลี่ยนตัวเลขโรมัน-อารบิก</h3>
+    <table>
+        <thead><tr><th>ข้อ</th><th>โจทย์</th><th>คำตอบ</th></tr></thead>
+        <tbody>
+            <tr><td>2.1</td><td>XVII</td><td id="c2_1"><input type="text" id="p2_1"></td></tr>
+            <tr><td>2.2</td><td>8</td><td id="c2_2"><input type="text" id="p2_2"></td></tr>
+        </tbody>
+    </table>
+
+    <h3>3. ชนิดของจำนวน (ตรวจตามเงื่อนไขที่กำหนด)</h3>
+    <table id="part3">
+        <thead>
+            <tr><th>จำนวน</th><th>นับ</th><th>เต็ม</th><th>ลบ</th><th>ตรรกยะ</th><th>อตรรกยะ</th><th>จริง</th></tr>
+        </thead>
+        <tbody>
+            <tr data-num="-8"><td>-8</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+            <tr data-num="0"><td>0</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+            <tr data-num="3.25"><td>3.25</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+        </tbody>
+    </table>
+
+    <div id="resultArea" class="result-panel"></div>
+    <button id="btnSubmit" class="btn-submit" onclick="checkAnswers()">ส่งคำตอบและตรวจคะแนน</button>
+    <div class="back-wrap">
+  <a href="unit1.html" class="back-btn">⬅ กลับหน้าบทเรียน</a>
+</div>
+</div>
+ 
+<script>
+    function checkAnswers() {
+        let score = 0;
+        const total = 10; 
+
+        const name = document.getElementById('userName').value;
+        const uClass = document.getElementById('userClass').value;
+        const uDept = document.getElementById('userDept').value;
+
+        if(!name || !uClass || !uDept) {
+            alert("กรุณากรอกข้อมูลส่วนตัวให้ครบถ้วน");
+            return;
+        }
+
+        // --- 1. ตรวจตอนที่ 1 (Radio) ---
+        const ans1 = { p1_1:'ar', p1_2:'bb', p1_3:'ar', p1_4:'rm', p1_5:'rm' };
+        for(let k in ans1) {
+            let opts = document.getElementsByName(k);
+            opts.forEach(o => {
+                o.parentElement.className = "";
+                if(o.checked) {
+                    if(o.value === ans1[k]) { score++; o.parentElement.className = "is-correct"; }
+                    else { o.parentElement.className = "is-wrong"; }
+                }
+            });
+        }
+
+        // --- 2. ตรวจตอนที่ 2 (Text) ---
+        const ans2 = { p2_1:'17', p2_2:'VIII' };
+        for(let k in ans2) {
+            let input = document.getElementById(k);
+            let cell = document.getElementById('c' + k.substring(1));
+            let val = input.value.trim().toUpperCase();
+            if(val === ans2[k]) { score++; cell.className = "is-correct"; }
+            else { cell.className = "is-wrong"; }
+        }
+
+        // --- 3. ตรวจตอนที่ 3 (Checkbox) - ปรับจูนสีให้ถูกต้อง ---
+        const ans3 = { 
+            // Index: 0:นับ, 1:เต็ม, 2:ลบ, 3:ตรรกยะ, 4:อตรรกยะ, 5:จริง
+            "-8":   [0, 0, 1, 1, 0, 1], // ลบ, ตรรกยะ, จริง (ตามโจทย์ผู้ใช้)
+            "0":    [0, 1, 0, 1, 0, 1], // เต็ม, ตรรกยะ, จริง
+            "3.25": [0, 0, 0, 1, 0, 1]  // ตรรกยะ, จริง
+        };
+
+        document.querySelectorAll("#part3 tbody tr").forEach(row => {
+            let num = row.getAttribute("data-num");
+            let checks = row.querySelectorAll("input");
+            let isRowCorrect = true;
+
+            checks.forEach((chk, i) => {
+                let shouldBeChecked = (ans3[num][i] === 1);
+                chk.parentElement.className = ""; // ล้างสีเก่า
+
+                if (chk.checked && shouldBeChecked) {
+                    // ติ๊กในช่องที่ถูก -> สีเขียว
+                    chk.parentElement.className = "is-correct";
+                } else if (chk.checked && !shouldBeChecked) {
+                    // ติ๊กในช่องที่ผิด -> สีแดง
+                    chk.parentElement.className = "is-wrong";
+                    isRowCorrect = false;
+                } else if (!chk.checked && shouldBeChecked) {
+                    // ไม่ได้ติ๊กในช่องที่ควรติ๊ก -> สีแดง
+                    chk.parentElement.className = "is-wrong";
+                    isRowCorrect = false;
+                }
+                // ถ้าไม่ติ๊กและไม่ควรติ๊กอยู่แล้ว -> ปล่อยว่าง (ถูกต้อง)
+            });
+
+            if(isRowCorrect) score++; 
+        });
+
+        // แสดงผล
+        const res = document.getElementById('resultArea');
+        res.style.display = "block";
+        res.innerHTML = `คะแนนของคุณ: ${score} / ${total}`;
+        document.getElementById('btnSubmit').disabled = true;
+
+        // ส่งข้อมูล (ใช้ URL เดิมของคุณ)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzS2GPzEOlZ1ZlS3rgk7NAbrlC341_5liY0s2_J28XbmyYdzopeSiwCQ36v-VcdBVu51w/exec'; 
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "timestamp": new Date().toLocaleString('th-TH'),
+                "name": name, "class": uClass, "dept": uDept, "score": score, "total": total
+            })
+        }).then(() => res.innerHTML += "<br>บันทึกสำเร็จ!");
+    }
+</script>
+
+</body>
+</html>
