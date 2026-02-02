@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>แบบฝึกหัดบทที่ 4</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:'Prompt',sans-serif;
+  background:#eefaf4;
+  padding:20px;
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+}
+h1{
+  text-align:center;
+  color:#0b6b53;
+  margin-bottom:30px;
+}
+
+/* ===== Card Theme ===== */
+.card-front{
+  background: linear-gradient(135deg, #84fab0, #4cc1a1);
+  padding:25px;
+  border-radius:22px;
+  margin-bottom:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+.inner{
+  background:#ffffffee;
+  padding:25px;
+  border-radius:18px;
+}
+
+/* ===== Student Info ===== */
+.student-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:20px;
+}
+label{
+  font-weight:600;
+}
+input{
+  width:100%;
+  padding:10px;
+  font-size:16px;
+  border-radius:10px;
+  border:1px solid #9adbc7;
+}
+
+/* ===== Drag Drop ===== */
+.symbols{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:15px 0;
+}
+.symbol{
+  width:60px;
+  height:60px;
+  background:#0b6b53;
+  color:#fff;
+  border-radius:14px;
+  font-size:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:grab;
+}
+.drop-zone{
+  min-height:70px;
+  border:2px dashed #0b6b53;
+  border-radius:14px;
+  padding:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+/* ===== Vertical Calculation ===== */
+.calc{
+  font-family:monospace;
+  background:#f7fdfb;
+  padding:15px;
+  border-radius:14px;
+  width:max-content;
+}
+.carry, .row{
+  display:flex;
+  justify-content:flex-end;
+  gap:6px;
+  margin-bottom:5px;
+}
+.carry input{
+  width:32px;
+  height:32px;
+  border:2px dashed #4cc1a1;
+  text-align:center;
+}
+.row input{
+  width:32px;
+  height:32px;
+  text-align:center;
+  font-size:18px;
+}
+.row span{
+  width:22px;
+  text-align:center;
+  font-size:20px;
+}
+hr{
+  border:0;
+  border-top:3px solid #0b6b53;
+  margin:10px 0;
+}
+
+/* ===== Button ===== */
+button{
+  width:100%;
+  padding:16px;
+  font-size:18px;
+  background:#0b6b53;
+  color:#fff;
+  border:none;
+  border-radius:18px;
+  cursor:pointer;
+}
+.result{
+  text-align:center;
+  font-size:20px;
+  margin-top:15px;
+  color:#0b6b53;
+}
+.back-wrap{
+  text-align:center;
+  margin-top:25px;
+}
+
+.back-wrap{
+  text-align:center;
+  margin-top:30px;
+}
+
+.btn-back{
+  width:220px;
+  padding:8px 0;
+  font-size:16px;
+  font-weight:600;
+  color:#0b6b53;
+  background:transparent;
+  border:2px solid #0b6b53;
+  border-radius:40px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn-back:hover{
+  background:#0b6b53;
+  color:white;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>แบบฝึกหัดหน่วยที่ 4 การคำนวณเลขฐาน</h1>
+
+<!-- ข้อมูลนักเรียน -->
+<div class="card-front">
+  <div class="inner">
+    <div class="student-grid">
+      <div>
+        <label>ชื่อ – สกุล</label>
+        <input id="stuName">
+      </div>
+      <div>
+        <label>ชั้น</label>
+        <input id="stuClass">
+      </div>
+      <div>
+        <label>แผนก</label>
+        <input id="stuDept">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ข้อ 1 -->
+<div class="card-front"><div class="inner">
+<h3>ข้อ 1 (1 คะแนน)</h3>
+<p>เครื่องหมาย <b>-</b> มีชื่อเรียกว่าอะไร</p>
+<input id="q1">
+</div></div>
+
+<!-- ข้อ 2 -->
+<div class="card-front"><div class="inner">
+<h3>ข้อ 2 (1 คะแนน)</h3>
+<p>เครื่องหมาย <b>+</b> มีชื่อเรียกว่าอะไร</p>
+<input id="q2">
+</div></div>
+
+<!-- ข้อ 3 -->
+<div class="card-front"><div class="inner">
+<h3>ข้อ 3 (3 คะแนน)</h3>
+<p>เรียงลำดับความสำคัญของเครื่องหมาย</p>
+
+<div class="symbols">
+  <div class="symbol" draggable="true">^</div>
+  <div class="symbol" draggable="true">*</div>
+  <div class="symbol" draggable="true">/</div>
+  <div class="symbol" draggable="true">+</div>
+  <div class="symbol" draggable="true">-</div>
+</div>
+
+<p>ลำดับที่ 1</p><div class="drop-zone" id="z1"></div>
+<p>ลำดับที่ 2</p><div class="drop-zone" id="z2"></div>
+<p>ลำดับที่ 3</p><div class="drop-zone" id="z3"></div>
+</div></div>
+
+<!-- ข้อ 4 -->
+<div class="card-front"><div class="inner">
+<h3>ข้อ 4 (1 คะแนน)</h3>
+<p>9 ÷ 3 + 4 × 2 = ?</p>
+<input id="q4">
+</div></div>
+
+<!-- ข้อ 5 -->
+<div class="card-front"><div class="inner">
+<h3>ข้อ 5 (2 คะแนน)</h3>
+<p>1011₂ + 110₂</p>
+
+<div class="calc">
+  <div class="carry"><input><input><input><input><input><input></div>
+  <div class="row"><span></span>
+    <input value="1" disabled>
+    <input value="0" disabled>
+    <input value="1" disabled>
+    <input value="1" disabled>
+  </div>
+  <div class="row"><span>+</span>
+    <input value="1" disabled>
+    <input value="1" disabled>
+    <input value="0" disabled>
+  </div>
+  <hr>
+  <div class="row"><span></span>
+    <input><input><input><input><input><input>
+  </div>
+</div>
+
+<br>
+<label>คำตอบสุดท้าย</label>
+<input id="q5" placeholder="">
+</div></div>
+
+<!-- ข้อ 6 -->
+<div class="card-front"><div class="inner">
+<h3>ข้อ 6 (2 คะแนน)</h3>
+<p>25.50 − 7.495</p>
+
+<div class="calc">
+  <div class="carry"><input><input><input><input><input><input></div>
+  <div class="row"><span></span>
+    <input value="2" disabled>
+    <input value="5" disabled>
+    <input value="." disabled>
+    <input value="5" disabled>
+    <input value="0" disabled>
+    <input value="0" disabled>
+  </div>
+  <div class="row"><span>−</span>
+    <input value="0" disabled>
+    <input value="7" disabled>
+    <input value="." disabled>
+    <input value="4" disabled>
+    <input value="9" disabled>
+    <input value="5" disabled>
+  </div>
+  <hr>
+  <div class="row"><span></span>
+    <input><input><input><input><input><input>
+  </div>
+</div>
+
+<br>
+<label>คำตอบสุดท้าย</label>
+<input id="q6" placeholder="">
+</div></div>
+
+<button onclick="submitWork()">ส่งคำตอบ</button>
+<div class="result" id="result"></div>
+
+<div class="back-wrap">
+  <button class="btn-back" onclick="history.back()">⬅ ย้อนกลับ</button>
+</div>
+
+</div>
+
+<script>
+/* ===== Drag & Drop ===== */
+let drag=null;
+document.querySelectorAll('.symbol').forEach(s=>{
+  s.addEventListener('dragstart',()=>drag=s);
+});
+document.querySelectorAll('.drop-zone').forEach(z=>{
+  z.addEventListener('dragover',e=>e.preventDefault());
+  z.addEventListener('drop',()=>drag && z.appendChild(drag));
+});
+
+/* ===== Google Apps Script ===== */
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzCWf6Db8BSsZpK6UyDMHPPtLmpCWmq0WRBo48oe05RaOVFM2YL6vawoHYowQVFLJ0RjA/exec";
+
+/* ===== Submit ===== */
+function submitWork(){
+  if(!stuName.value || !stuClass.value || !stuDept.value){
+    alert("กรุณากรอกข้อมูลให้ครบ");
+    return;
+  }
+
+  let score = 0;
+
+  // ข้อ 1
+  if(q1.value.includes("ลบ")) score += 1;
+
+  // ข้อ 2
+  if(q2.value.includes("บวก")) score += 1;
+
+  // ข้อ 3 (แยกย่อย)
+  if(z1.innerText.includes("^")) score += 1;
+  if(z2.innerText.includes("*") || z2.innerText.includes("/")) score += 1;
+  if(z3.innerText.includes("+") || z3.innerText.includes("-")) score += 1;
+
+  // ข้อ 4
+  if(q4.value.trim() === "11") score += 1;
+
+  
+  // ข้อ 5
+  if(q5.value.trim() === "10001") score += 2;
+
+  // ข้อ 6
+  if(q6.value.trim() === "18.005") score += 2;
+
+  const total = 10;
+
+  const url =
+    WEB_APP_URL +
+    "?time=" + encodeURIComponent(new Date().toLocaleString()) +
+    "&name=" + encodeURIComponent(stuName.value) +
+    "&class=" + encodeURIComponent(stuClass.value) +
+    "&dept=" + encodeURIComponent(stuDept.value) +
+    "&score=" + score +
+    "&total=" + total;
+
+  fetch(url);
+  result.innerText = `✅ ได้คะแนน ${score} / ${total}`;
+}
+</script>
+
+</body>
+</html>
