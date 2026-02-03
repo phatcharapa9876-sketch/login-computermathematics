@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>แบบฝึกหัด บทที่ 5 ตรรกศาสตร์</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  font-family:'Sarabun',sans-serif;
+  background:#fff4ec;
+  margin:0;
+  padding:30px;
+}
+.container{
+  max-width:900px;
+  margin:auto;
+}
+.title{
+  text-align:center;
+  font-size:30px;
+  font-weight:700;
+  margin-bottom:25px;
+}
+.profile{
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 6px 15px rgba(0,0,0,.1);
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:15px;
+  margin-bottom:30px;
+}
+.profile input{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+.section{
+  background:linear-gradient(135deg,#fccb90,#f78c6b);
+  padding:25px;
+  border-radius:25px;
+  margin-bottom:25px;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+.answer{
+  width:60px;
+  padding:6px;
+  border-radius:8px;
+  border:1px solid #555;
+  text-align:center;
+  font-weight:bold;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+  background:#fff;
+}
+th,td{
+  padding:10px;
+  border:1px solid #ddd;
+  text-align:center;
+}
+th{
+  background:#ffe0c2;
+}
+button{
+  display:block;
+  margin:30px auto;
+  padding:14px 40px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff7043;
+  color:white;
+  cursor:pointer;
+}
+.result{
+  text-align:center;
+  font-size:26px;
+  font-weight:700;
+  margin-top:20px;
+  color:#2e7d32;
+}
+.btn-back{
+  display:block;
+  width:220px;
+  margin:25px auto 0;
+  padding:12px;
+  text-align:center;
+  border-radius:20px;
+  background:#ff8a65;
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+}
+.btn-back:hover{
+  opacity:.9;
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="title">📘 แบบฝึกหัด หน่วยที่ 5 เรื่อง ตรรกศาสตร์เบื้องต้น</div>
+
+<div class="profile">
+  <input id="name" placeholder="ชื่อ - สกุล">
+  <input id="stuClass" placeholder="ชั้น">
+  <input id="dept" placeholder="แผนก">
+</div>
+
+<div class="section">
+<h3>ข้อ 1</h3>
+<h4>ให้นักเรียนพิจารณาประพจน์ต่อไปนี้ว่าเป็นประพจน์หรือไม่</h4>
+1) 2 − 5 = 5 − 2 <input class="answer" id="q1_1"><br><br>
+2) คุณจะไปไหน <input class="answer" id="q1_2"><br><br>
+3) 3 เป็นจำนวนคี่ <input class="answer" id="q1_3"><br><br>
+4) 5 × 8 ได้เท่าไหร่ <input class="answer" id="q1_4">
+</div>
+
+<div class="section">
+<h3>ข้อ 2</h3>
+<h4>ให้นักเรียนตอบคำถามให้ถูกต้อง</h4>
+สัญลักษณ์ที่ใช้แทนค่าความจริงที่เป็นจริง คือ <input class="answer" id="q2_1"><br><br>
+สัญลักษณ์ที่ใช้แทนค่าความจริงที่เป็นเท็จ คือ <input class="answer" id="q2_2">
+</div>
+
+<div class="section">
+<h3>ข้อ 3</h3>
+<h4>ให้นักเรียนเติบคำตอบในช่องว่างให้ถูกต้อง</h4>
+<table>
+<tr>
+<th>p</th><th>q</th><th>p ∧ q</th><th>(p ∧ q) → p</th>
+</tr>
+<tr>
+<td>T</td><td>T</td>
+<td><input class="answer" id="q3_1"></td>
+<td><input class="answer" id="q3_2"></td>
+</tr>
+<tr>
+<td>T</td><td>F</td>
+<td><input class="answer" id="q3_3"></td>
+<td><input class="answer" id="q3_4"></td>
+</tr>
+<tr>
+<td>F</td><td>T</td>
+<td><input class="answer" id="q3_5"></td>
+<td><input class="answer" id="q3_6"></td>
+</tr>
+<tr>
+<td>F</td><td>F</td>
+<td><input class="answer" id="q3_7"></td>
+<td><input class="answer" id="q3_8"></td>
+</tr>
+</table>
+</div>
+
+<button onclick="submitWork()">ส่งคำตอบ</button>
+<div id="score" class="result"></div>
+<a href="unit5.html" class="btn-back">⬅ กลับหน้าบทเรียน</a>
+
+</div>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzBL5x-k-UGyKScqQhsYd4azVsM8q41d1IODjwMBGZ33G-v3_j7FmIxwHDA8sYPYHY/exec";
+
+function submitWork(){
+
+  const nameEl = document.getElementById("name");
+  const classEl = document.getElementById("stuClass");
+  const deptEl = document.getElementById("dept");
+
+  if(!nameEl.value || !classEl.value || !deptEl.value){
+    alert("กรุณากรอกข้อมูลให้ครบ");
+    return;
+  }
+
+  let score = 0;
+
+  const q1Ans = ["เป็น","ไม่เป็น","เป็น","ไม่เป็น"];
+  q1Ans.forEach((a,i)=>{
+    if(document.getElementById("q1_"+(i+1)).value.trim().toUpperCase() === a){
+      score++;
+    }
+  });
+
+  if(document.getElementById("q2_1").value.trim().toUpperCase()==="T") score++;
+  if(document.getElementById("q2_2").value.trim().toUpperCase()==="F") score++;
+
+  const ans3 = ["T","T","F","T","F","T","F","T"];
+  ans3.forEach((a,i)=>{
+    if(document.getElementById("q3_"+(i+1)).value.trim().toUpperCase()===a){
+      score+=0.5;
+    }
+  });
+
+  const total = 10;
+
+  const url =
+    WEB_APP_URL +
+    "?name=" + encodeURIComponent(nameEl.value) +
+    "&class=" + encodeURIComponent(classEl.value) +
+    "&dept=" + encodeURIComponent(deptEl.value) +
+    "&score=" + score +
+    "&total=" + total;
+
+  fetch(url)
+    .then(()=>console.log("ส่งแล้ว"))
+    .catch(()=>console.log("ส่งไม่สำเร็จ"));
+
+  document.getElementById("score").innerText =
+    `✅ ได้คะแนน ${score} / ${total}`;
+}
+</script>
+
+</body>
+</html>
