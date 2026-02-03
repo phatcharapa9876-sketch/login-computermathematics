@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>บทที่ 5 : สรุปและการประยุกต์</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --main-grad: linear-gradient(135deg,#fccb90,#f78c6b);
+    --bg: #fff4ec;
+    --title: #e76f51;
+}
+
+body{
+    margin:0;
+    font-family:'Prompt',sans-serif;
+    background:var(--bg);
+}
+
+/* ===== Header ===== */
+.header{
+    background:var(--main-grad);
+    padding:45px 20px;
+    text-align:center;
+    color:white;
+    border-radius:0 0 30px 30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.header h1{
+    margin:0;
+    font-size:34px;
+}
+
+/* ===== Layout ===== */
+.container{
+    max-width:900px;
+    width:90%;
+    margin:35px auto;
+}
+
+/* ===== Section ===== */
+.section{
+    background:white;
+    padding:28px;
+    border-radius:22px;
+    margin-bottom:22px;
+    box-shadow:0 6px 16px rgba(0,0,0,.12);
+}
+
+.section h2{
+    margin-top:0;
+    margin-bottom:18px;
+    color:var(--title);
+}
+
+/* ===== Buttons ===== */
+.btn{
+    display:block;
+    padding:16px;
+    border-radius:16px;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    background:var(--main-grad);
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+/* ===== Video Grid (2 บน 2 ล่าง) ===== */
+.video-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+/* ===== Navigation ===== */
+.nav-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:18px;
+    margin:45px 0;
+}
+
+.nav-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 24px;
+    border-radius:24px;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+    transition:.3s;
+}
+
+.nav-card span{font-size:26px;}
+.nav-card small{font-size:14px; opacity:.8;}
+.nav-card strong{font-size:20px;}
+
+/* Back + Home */
+.nav-card.back,
+.nav-card.home{
+    background:white;
+    color:#444;
+    border:2px solid #ffd7c2;
+}
+
+/* Next */
+.nav-card.next{
+    background:var(--main-grad);
+    color:white;
+}
+
+.nav-card:hover{
+    transform:translateY(-4px);
+}
+
+/* ===== Mobile ===== */
+@media(max-width:700px){
+    .video-grid,
+    .nav-wrap{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>หน่วยที่ 5 ตรรกศาสตร์เบื้องต้น</h1>
+</div>
+
+<div class="container">
+
+    <div class="section">
+        <h2>✨ แบบทดสอบก่อนเรียน</h2>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdolOQM-ig9ejcVFHu4RIy5uD7gW2VNel_UWd4Mbl3bEO1ILQ/viewform?usp=header" class="btn">เริ่มทำแบบทดสอบก่อนเรียน</a>
+    </div>
+
+    <div class="section">
+        <h2>🎬 วิดีโอการสอน</h2>
+        <div class="video-grid">
+            <a href="learn51.html" class="btn">ประพจน์</a>
+            <a href="learn52.html" class="btn">การหาค่าความจริง</a>
+            <a href="learn53.html" class="btn">ประพจน์ต่างๆ</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📝 แบบฝึกหัด</h2>
+        <a href="pretest5.html" class="btn">ทำแบบฝึกหัด</a>
+    </div>
+
+    <div class="section">
+        <h2>🏁 แบบทดสอบหลังเรียน</h2>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdftPDG5C12X9PAjbU9x42jN8O0BGHnX18mZb-yMkXAZ3H2tQ/viewform?usp=publish-editor" class="btn">ทำแบบทดสอบหลังเรียน</a>
+    </div>
+
+    <!-- ===== Navigation ===== -->
+    <div class="nav-wrap">
+        <a href="unit4.html" class="nav-card back">
+            <div>
+                <small>ย้อนกลับ</small><br>
+                <strong>บทก่อนหน้า</strong>
+            </div>
+            <span>⬅</span>
+        </a>
+
+        <a href="Homepage.html" class="nav-card home">
+            <div>
+                <small>กลับไป</small><br>
+                <strong>หน้าหลัก</strong>
+            </div>
+            <span>🏠</span>
+        </a>
+
+        <a href="finish.html" class="nav-card next">
+            <div>
+                <small>ถัดไป</small><br>
+                <strong>บทเรียนถัดไป</strong>
+            </div>
+            <span>➡</span>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
