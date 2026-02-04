@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกหัดพีชคณิตบูลลีน - หน่วยที่ 6</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap');
+        :root {
+            --primary-gradient: linear-gradient(135deg, #fbc2eb, #c07edb);
+            --accent-purple: #9c27b0;
+            --soft-purple: #f3e5f5;
+        }
+        body { font-family: 'Sarabun', sans-serif; background: #f8f9fa; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 900px; width: 100%; background: white; border-radius: 30px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #eee; }
+        .header { background: var(--primary-gradient); padding: 40px 20px; color: white; text-align: center; }
+        .content { padding: 40px; }
+        .info-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 15px; background: var(--soft-purple); padding: 20px; border-radius: 15px; margin-bottom: 40px; }
+        .info-grid input { border: none; border-bottom: 2px solid #fff; background: transparent; padding: 8px; outline: none; font-size: 1rem; }
+        .section-box { margin-bottom: 40px; border: 1px solid #f0f0f0; padding: 25px; border-radius: 20px; background: #fff; }
+        .section-title { font-size: 1.2rem; font-weight: bold; color: var(--accent-purple); margin-bottom: 20px; border-left: 5px solid var(--accent-purple); padding-left: 15px; }
+        .q1-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .q1-item { background: #fafafa; padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .q1-item input { width: 60%; padding: 8px; border: 1px solid #ddd; border-radius: 8px; }
+        .drag-pool { display: flex; flex-wrap: wrap; gap: 10px; background: #fff8ff; padding: 20px; border-radius: 15px; border: 2px dashed #c07edb; margin-bottom: 20px; }
+        .draggable { background: white; padding: 10px 20px; border-radius: 10px; cursor: grab; border: 1px solid #c07edb; font-weight: bold; user-select: none; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { background: #f4f4f4; padding: 12px; border: 1px solid #eee; }
+        td { border: 1px solid #eee; padding: 15px; text-align: center; }
+        .drop-zone { min-height: 45px; border: 2px dashed #ccc; border-radius: 8px; display: flex; justify-content: center; align-items: center; background: #fff; transition: 0.3s; }
+        .drop-zone.hover { background: #f3e5f5; border-color: var(--accent-purple); }
+        .toggle-btn { width: 40px; height: 40px; border: 2px solid #ddd; border-radius: 10px; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; font-size: 1.2rem; font-weight: bold; margin-right: 15px; background: white; vertical-align: middle; }
+        .toggle-btn.check { color: #4caf50; border-color: #4caf50; background: #f1f8e9; }
+        .toggle-btn.cross { color: #f44336; border-color: #f44336; background: #ffebee; }
+        .btn-check { width: 100%; padding: 20px; border: none; background: var(--primary-gradient); color: white; font-size: 1.3rem; font-weight: bold; border-radius: 15px; cursor: pointer; }
+        #result-box { display: none; margin-top: 30px; padding: 25px; border-radius: 20px; text-align: center; font-size: 1.5rem; font-weight: bold; border: 3px solid #c07edb; background: #fff; }
+    .btn-back{
+  display:block;
+  width:220px;
+  margin:25px auto 0;
+  padding:12px;
+  text-align:center;
+  border-radius:20px;
+  background:#c07edb;
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+}
+.btn-back:hover{
+  opacity:.9;
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>แบบฝึกหัดหน่วยที่ 6</h1>
+        <p>ความรู้พื้นฐานเกี่ยวกับพีชคณิตบูลีน และวงจรตรรกะ  </p>
+    </div>
+
+    <div class="content">
+        <div class="info-grid">
+            <input id="name" placeholder="ชื่อ-นามสกุล">
+            <input id="class" placeholder="ชั้น">
+            <input id="dept" placeholder="แผนก">
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">ข้อ 1: จากรูปสัญลักษณ์นี้มีชื่อว่าอะไร (ให้นักเรียนเขียนเป็นภาษาอังกฤษตัวพิมพ์ใหญ่ทั้งหมด) (3 คะแนน)</div>
+            <div class="q1-grid">
+                <div class="q1-item">"." <input id="q1_1" placeholder=""></div>
+                <div class="q1-item">"+" <input id="q1_5" placeholder=""></div>
+                <div class="q1-item">"~" <input id="q1_6" placeholder=""></div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">ข้อ 2: ลากคำตอบวางในช่องว่างให้ถูกต้อง (3 คะแนน)</div>
+            <div class="drag-pool">
+                <div class="draggable" draggable="true" data-val=".">.</div>
+                <div class="draggable" draggable="true" data-val="การแอนด์">การแอนด์</div>
+                <div class="draggable" draggable="true" data-val="+">+</div>
+                <div class="draggable" draggable="true" data-val="การออร์">การออร์</div>
+                <div class="draggable" draggable="true" data-val="_ (Bar)">_ (Bar)</div>
+                <div class="draggable" draggable="true" data-val="การน็อต">การน็อต</div>
+            </div>
+            <table>
+                <tr><th>ตรรกศาสตร์</th><th>บูลลีน</th><th>ความหมาย</th></tr>
+                <tr><td>∧</td><td><div class="drop-zone" data-ans="."></div></td><td><div class="drop-zone" data-ans="การแอนด์"></div></td></tr>
+                <tr><td>∨</td><td><div class="drop-zone" data-ans="+"></div></td><td><div class="drop-zone" data-ans="การออร์"></div></td></tr>
+                <tr><td>~</td><td><div class="drop-zone" data-ans="_ (Bar)"></div></td><td><div class="drop-zone" data-ans="การน็อต"></div></td></tr>
+            </table>
+        </div>
+
+        <div class="section-box">
+            <div class="section-title">ข้อ 3: คลิกเพื่อเลือกเครื่องหมาย ✓ หรือ ✕ (4 คะแนน)</div>
+            <div style="margin: 15px 0;"><div class="toggle-btn" onclick="toggle(this)" data-ans="✓"></div> 1 + 0 = 1</div>
+            <div style="margin: 15px 0;"><div class="toggle-btn" onclick="toggle(this)" data-ans="✕"></div> 1 · 0 = 1</div>
+            <div style="margin: 15px 0;"><div class="toggle-btn" onclick="toggle(this)" data-ans="✕"></div> 1 + 1 = 0</div>
+            <div style="margin: 15px 0;"><div class="toggle-btn" onclick="toggle(this)" data-ans="✓"></div> 0 · 0 = 0</div>
+        </div>
+
+        <button class="btn-check" onclick="checkAll()">ส่งคำตอบและตรวจคะแนน</button>
+        <div id="result-box"></div>
+    </div>
+    <a href="unit6.html" class="btn-back">⬅ กลับหน้าบทเรียน</a>
+</div>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvn5wyX1tD2thGMsrn9KCb8P4TdCTjR6IOQ1gz8PVnU2rJjR26miwrGqzUCPtG5H2THQ/exec";
+
+// Drag and Drop
+let draggedText = "";
+document.querySelectorAll(".draggable").forEach(d => {
+    d.addEventListener("dragstart", (e) => { draggedText = e.target.getAttribute("data-val"); });
+});
+document.querySelectorAll(".drop-zone").forEach(z => {
+    z.addEventListener("dragover", e => e.preventDefault());
+    z.addEventListener("drop", e => { z.innerText = draggedText; });
+});
+
+// Toggle
+function toggle(btn) {
+    if (btn.innerText === "") { btn.innerText = "✓"; btn.classList.add("check"); }
+    else if (btn.innerText === "✓") { btn.innerText = "✕"; btn.classList.remove("check"); btn.classList.add("cross"); }
+    else { btn.innerText = ""; btn.classList.remove("cross"); }
+}
+
+// Check Score
+function checkAll() {
+    let score = 0;
+
+    // ตรวจข้อ 1 (แก้ ID ให้ตรงและเช็กคำตอบ)
+    if (document.getElementById("q1_1").value.includes("AND")) score++;
+    if (document.getElementById("q1_5").value.includes("OR")) score++;
+    if (document.getElementById("q1_6").value.includes("NOT")) score++;
+
+    // ตรวจข้อ 2 (ข้อละ 1 คะแนน รวม 3 คะแนนจาก 6 ช่อง) - หรือคุณจะให้ช่องละ 0.5 ก็ได้ครับ
+    // ในที่นี้ถ้าตอบถูก 1 แถว (2 ช่อง) ผมให้นับเป็นคะแนนแถวละ 1 นะครับ (รวม 3)
+    let q2_score = 0;
+    const zones = document.querySelectorAll(".drop-zone");
+    zones.forEach(z => { if (z.innerText.trim() === z.dataset.ans) q2_score += 0.5; });
+    score += Math.floor(q2_score); 
+
+    // ตรวจข้อ 3 (4 คะแนน)
+    document.querySelectorAll(".toggle-btn").forEach(t => { if (t.innerText === t.dataset.ans) score++; });
+
+    let name = document.getElementById("name").value;
+    let classs = document.getElementById("class").value;
+    let dept = document.getElementById("dept").value;
+
+    if (!name) { alert("กรุณากรอกชื่อ"); return; }
+
+    // ส่งข้อมูล
+    fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({ name, class: classs, dept, score: score })
+    });
+
+    let box = document.getElementById("result-box");
+    box.style.display = "block";
+    box.innerHTML = `คุณ ${name} ได้คะแนน ${score}/10 คะแนน`;
+}
+</script>
+</body>
+</html>
