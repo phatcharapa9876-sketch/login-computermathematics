@@ -7,36 +7,57 @@
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+:root {
+    /* ใช้โทนสีส้มอิฐ-น้ำตาลนวลชุดเดียวกับหน้าหลัก */
+    --main-grad: linear-gradient(135deg, #E67E22, #D35400); 
+    --bg: #FFFAF5; 
+    --title-color: #A04000;
+    --accent: #F39C12;
+}
+
 body {
     font-family: 'Prompt', sans-serif;
     margin: 0;
-    background: #fff6ee;
+    background: var(--bg);
+    color: #444;
 }
 
+/* ===== Header ===== */
 .header {
-    background: linear-gradient(135deg, #ffecd2, #f9a66d);
+    background: var(--main-grad);
     color: white;
-    padding: 25px;
+    padding: 30px 20px;
     text-align: center;
-    border-radius: 0 0 25px 25px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 6px 15px rgba(211, 84, 0, 0.2);
 }
 
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+/* ===== Layout ===== */
 .container {
     max-width: 1000px;
-    margin: 30px auto;
-    padding: 20px;
+    margin: 35px auto;
+    padding: 0 20px;
 }
 
+/* ===== Video Box ===== */
 .video-box {
     background: white;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    border: 1px solid #FFF0E5;
 }
 
 .video-row {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
@@ -45,41 +66,50 @@ body {
     min-width: 300px;
 }
 
+/* ชื่อคลิปด้านบน */
 .video-title {
-    color: #e67e22;
-    font-size: 16px;
+    color: var(--title-color);
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 10px;
-    border-left: 4px solid #f9a66d;
-    padding-left: 10px;
+    margin-bottom: 12px;
+    border-left: 5px solid var(--accent);
+    padding-left: 12px;
 }
 
 video {
     width: 100%;
-    border-radius: 15px;
-    background: black;
+    border-radius: 18px;
+    background: #2c3e50;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* --- ปุ่มกลับหน้าบทเรียนแบบยาวเต็มพื้นที่ --- */
+/* --- ปุ่มกลับหน้าบทเรียน --- */
 .btn-back {
-    display: block;          /* ทำให้ยาวเต็มบรรทัด */
-    margin-top: 30px;
+    display: block;
+    margin-top: 40px;
     text-align: center;
-    padding: 15px;           /* เพิ่มความหนาของปุ่ม */
-    border-radius: 15px;     /* ความโค้งมนระดับปานกลาง */
-    background: linear-gradient(135deg, #ffecd2, #f9a66d);
+    padding: 18px;
+    border-radius: 18px;
+    background: var(--main-grad);
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(249, 166, 109, 0.3);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(211, 84, 0, 0.25);
 }
 
 .btn-back:hover {
-    opacity: 0.9;
-    transform: translateY(-2px); /* ลอยขึ้นนิดหน่อยเวลาชี้ */
-    box-shadow: 0 6px 15px rgba(249, 166, 109, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(211, 84, 0, 0.35);
+    background: linear-gradient(135deg, #F39C12, #E67E22);
+}
+
+/* ปรับปรุงบนมือถือ */
+@media(max-width: 700px){
+    .header h1 { font-size: 22px; }
+    .video-row { gap: 20px; }
+    .video-box { padding: 20px; }
 }
 </style>
 </head>
@@ -98,6 +128,7 @@ video {
                 <div class="video-title">ระบบสมการเชิงเส้นตัวแปรเดียว</div>
                 <video controls>
                     <source src="7.4.1.mp4" type="video/mp4">
+                    เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
                 </video>
             </div>
 
@@ -105,6 +136,7 @@ video {
                 <div class="video-title">ระบบสมการเชิงเส้นสองตัวแปร</div>
                 <video controls>
                     <source src="7.4.2.mp4" type="video/mp4">
+                    เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
                 </video>
             </div>
         </div>
