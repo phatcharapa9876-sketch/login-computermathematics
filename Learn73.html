@@ -7,70 +7,95 @@
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+:root {
+    /* ใช้โทนสีส้มอิฐที่ความคมชัดสูงขึ้น เพื่อให้ตัวอักษรขาวมองเห็นชัด */
+    --main-grad: linear-gradient(135deg, #E67E22, #D35400); 
+    --bg: #FFFAF5; 
+    --title-color: #A04000;
+    --accent: #F39C12;
+}
+
 body {
     font-family: 'Prompt', sans-serif;
     margin: 0;
-    background: #fff6ee;
+    background: var(--bg);
+    color: #444;
 }
 
 .header {
-    background: linear-gradient(135deg, #ffecd2, #f9a66d);
+    background: var(--main-grad);
     color: white;
-    padding: 25px;
+    padding: 30px 20px;
     text-align: center;
-    border-radius: 0 0 25px 25px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 6px 15px rgba(211, 84, 0, 0.2);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .container {
     max-width: 900px;
-    margin: 30px auto;
+    margin: 35px auto;
     padding: 0 20px;
 }
 
 .video-box {
     background: white;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    border: 1px solid #FFF0E5;
 }
 
 /* ชื่อคลิปด้านบน */
 .video-title {
-    color: #e67e22;
-    font-size: 20px;
+    color: var(--title-color);
+    font-size: 22px;
     font-weight: 600;
-    margin-bottom: 15px;
-    border-left: 5px solid #f9a66d;
-    padding-left: 12px;
+    margin-bottom: 20px;
+    border-left: 6px solid var(--accent);
+    padding-left: 15px;
 }
 
 video {
     width: 100%;
-    border-radius: 15px;
-    background: black;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 18px;
+    background: #2c3e50;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* --- ปุ่มกลับหน้าบทเรียนแบบยาวเต็มพื้นที่ --- */
+/* --- ปุ่มกลับหน้าบทเรียน --- */
 .btn-back {
-    display: block;          /* ทำให้ยาวเต็มบรรทัด */
+    display: block;
     margin-top: 30px;
     text-align: center;
-    padding: 15px;           /* ความหนาของปุ่ม */
-    border-radius: 15px;     /* ความโค้งมน */
-    background: linear-gradient(135deg, #ffecd2, #f9a66d);
+    padding: 18px;
+    border-radius: 18px;
+    background: var(--main-grad);
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(249, 166, 109, 0.3);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(211, 84, 0, 0.25);
 }
 
 .btn-back:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(249, 166, 109, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(211, 84, 0, 0.35);
+    background: linear-gradient(135deg, #F39C12, #E67E22);
+}
+
+/* ปรับปรุงการแสดงผลบนมือถือ */
+@media(max-width: 600px) {
+    .header h1 { font-size: 22px; }
+    .video-box { padding: 20px; }
+    .video-title { font-size: 18px; }
 }
 </style>
 </head>
@@ -90,6 +115,7 @@ video {
 
         <video controls>
             <source src="7.3.mp4" type="video/mp4">
+            เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
         </video>
 
         <a href="unit7.html" class="btn-back">
