@@ -8,15 +8,21 @@
 
 <style>
 :root{
-  --main-grad: linear-gradient(135deg,#ffecd2,#f9a66d);
-  --bg:#fff6ec;
-  --title:#e07a3f;
+  /* ปรับเป็นสีส้มอิฐโทนอุ่น ไม่ทึบจนเกินไป */
+  --main-grad: linear-gradient(135deg, #E67E22, #D35400); 
+  /* พื้นหลังสีครีมขาว สว่างและสะอาดตา */
+  --bg: #FFFAF5; 
+  /* สีหัวข้อเป็นน้ำตาลนวลๆ */
+  --title: #A04000;
+  /* สีเวลาเอาเมาส์ไปชี้ ให้สว่างขึ้นเล็กน้อย */
+  --btn-hover: linear-gradient(135deg, #F39C12, #E67E22);
 }
 
 body{
   margin:0;
   font-family:'Prompt',sans-serif;
   background:var(--bg);
+  color: #444;
 }
 
 /* ===== Header ===== */
@@ -26,12 +32,14 @@ body{
   text-align:center;
   color:white;
   border-radius:0 0 30px 30px;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  box-shadow:0 6px 15px rgba(211, 84, 0, 0.2);
 }
 
 .header h1{
   margin:0;
-  font-size:34px;
+  font-size:32px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* ===== Layout ===== */
@@ -47,31 +55,38 @@ body{
   padding:28px;
   border-radius:22px;
   margin-bottom:22px;
-  box-shadow:0 6px 16px rgba(0,0,0,.12);
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #FFF0E5;
 }
 
 .section h2{
   margin-top:0;
   margin-bottom:18px;
   color:var(--title);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* ===== Buttons ===== */
 .btn{
   display:block;
   padding:16px;
-  border-radius:16px;
+  border-radius:15px;
   text-align:center;
   text-decoration:none;
   color:white;
   font-size:22px;
+  font-weight: 400; /* ปรับให้ดูบางลงนิดนึงเพื่อให้ดูไม่หนักเกินไป */
   background:var(--main-grad);
-  transition:.25s;
+  transition:.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover{
-  transform:scale(1.03);
-  box-shadow:0 8px 20px rgba(0,0,0,.2);
+  transform:translateY(-2px);
+  background:var(--btn-hover);
+  box-shadow:0 6px 15px rgba(211, 84, 0, 0.3);
 }
 
 /* ===== Video Grid ===== */
@@ -93,22 +108,21 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:22px 24px;
-  border-radius:24px;
+  padding:20px 22px;
+  border-radius:20px;
   text-decoration:none;
-  box-shadow:0 8px 20px rgba(0,0,0,.18);
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
   transition:.3s;
 }
 
-.nav-card span{font-size:26px;}
-.nav-card small{font-size:14px; opacity:.8;}
-.nav-card strong{font-size:20px;}
+.nav-card span{font-size:24px;}
+.nav-card small{font-size:13px; color: #777;}
+.nav-card strong{font-size:18px; color: #444;}
 
 .nav-card.back,
 .nav-card.home{
   background:white;
-  color:#444;
-  border:2px solid #ffd7c2;
+  border:1.5px solid #FAD7B5;
 }
 
 .nav-card.next{
@@ -116,8 +130,12 @@ body{
   color:white;
 }
 
+.nav-card.next strong, 
+.nav-card.next small { color: white; }
+
 .nav-card:hover{
-  transform:translateY(-4px);
+  transform:translateY(-3px);
+  border-color: #E67E22;
 }
 
 /* ===== Mobile ===== */
@@ -129,7 +147,6 @@ body{
 }
 </style>
 </head>
-
 <body>
 
 <div class="header">
@@ -140,15 +157,15 @@ body{
 
   <div class="section">
     <h2>✨ แบบทดสอบก่อนเรียน</h2>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXPHbMLgncr8tLvf93UsHugq_JUqloeu-SHsNEA0qvFVP-Fw/viewform?usp=publish-editor" class="btn">เริ่มทำแบบทดสอบก่อนเรียน</a>
+    <a href="#" class="btn">เริ่มทำแบบทดสอบก่อนเรียน</a>
   </div>
 
   <div class="section">
     <h2>🎬 วิดีโอการสอน</h2>
     <div class="video-grid">
-      <a href="Learn71.html" class="btn"> ความรู้เบื้องต้นเกี่ยวกับเมตริกซ์</a>
+      <a href="Learn71.html" class="btn">ความรู้เบื้องต้นเกี่ยวกับเมตริกซ์</a>
       <a href="Learn72.html" class="btn">การบวก การลบ และการคูณเมตริกซ์</a>
-      <a href="Learn73.html" class="btn"> ตัวกำหนด</a>
+      <a href="Learn73.html" class="btn">ตัวกำหนด</a>
       <a href="Learn74.html" class="btn">ระบบสมการ</a>
     </div>
   </div>
@@ -160,7 +177,7 @@ body{
 
   <div class="section">
     <h2>🏁 แบบทดสอบหลังเรียน</h2>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeLZhuf8Gtoed90G2S2jx9YYxuxov2zjp8VBPrA8wrmp15FhQ/viewform?usp=publish-editor" class="btn">ทำแบบทดสอบหลังเรียน</a>
+    <a href="#" class="btn">ทำแบบทดสอบหลังเรียน</a>
   </div>
 
   <div class="nav-wrap">
@@ -169,7 +186,7 @@ body{
         <small>ย้อนกลับ</small><br>
         <strong>บทก่อนหน้า</strong>
       </div>
-      <span>⬅</span>
+      <span>⬅️</span>
     </a>
 
     <a href="Homepage.html" class="nav-card home">
@@ -183,14 +200,13 @@ body{
     <a href="Homepage.html" class="nav-card next">
       <div>
         <strong>จบบทเรียน</strong><br>
-         <small>กลับไปหน้าหลัก</small> 
+        <small>กลับไปหน้าหลัก</small> 
       </div>
-      <span>✔</span>
+      <span>✔️</span>
     </a>
   </div>
 
 </div>
 
 </body>
-
 </html>
